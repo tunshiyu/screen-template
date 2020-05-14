@@ -47,6 +47,7 @@
     "@ant-design/icons": "^4.0.6",
     "@ant-design/pro-layout": "^5.0.9",
     "@ant-design/pro-table": "^2.2.6",
+    "@td-design/charts": "^2.4.0",
     "@umijs/hooks": "^1.9.2",
     "@umijs/plugin-esbuild": "^1.0.0-beta.2",
     "@umijs/preset-react": "1.x",
@@ -60,7 +61,6 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "umi": "^3.1.1",
-    "umi-plugin-antd-theme": "^2.1.2",
     "use-immer": "^0.4.0"
   },
   "devDependencies": {
@@ -86,7 +86,7 @@
     "cz-customizable": "^6.2.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.1.6",
-    "pont-engine": "1.0.3",
+    "pont-engine": "^1.0.3",
     "standard-version": "^8.0.0",
     "typescript": "^3.8.3",
     "umi-plugin-page-creator": "^0.0.1"
