@@ -1,8 +1,8 @@
-# 大屏组件库 Demo
+# 大屏模板
 
 ## 概要
 
-本示例为结合`@td-design/charts`组件库的图表使用实例，需要先安装`@td-design/charts`依赖。
+本示例为结合`@td-design/charts`组件库的图表模板，包括 32:9 和 16:9 版本。
 
 ## 用 babel-plugin-import 引入@td-design/charts 组件样式
 
