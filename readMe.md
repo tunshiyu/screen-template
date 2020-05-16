@@ -2,7 +2,7 @@
 
 ## 概要
 
-本项目为结合`@td-design/charts`组件库的图表模板，包括 32:9 和 16:9 版本,本版本为 32:9 ，分支 feat/bigScreen 为 16:9 版本。
+本项目为结合`@td-design/charts`组件库的图表模板，包括 32:9 和 16:9 版本,本版本为 16:9 ，分支 feat/bigScreen 为 32:9 版本。
 
 ## 用 babel-plugin-import 引入@td-design/charts 组件样式
 
