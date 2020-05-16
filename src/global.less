@@ -11,9 +11,11 @@ body::-webkit-scrollbar {
 body {
   -ms-overflow-style: none;
   height: 100%;
-  width: calc(100vw + 18px);
+  width: 3840px;
+  height: 1080px;
+  overflow: hidden;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
 #root {
@@ -22,7 +24,7 @@ body {
   input:-webkit-autofill,
   textarea:-webkit-autofill,
   select:-webkit-autofill {
-      box-shadow: inset 0 0 0 1000px #fff;
+    box-shadow: inset 0 0 0 1000px #fff;
   }
 
   .ant-layout {
@@ -55,7 +57,7 @@ body {
   }
 
   .ant-menu-inline-collapsed {
-    .ant-menu-submenu .ant-menu-submenu-title .iconfont+span,
+    .ant-menu-submenu .ant-menu-submenu-title .iconfont + span,
     .ant-menu-item span:last-child {
       display: inline-block;
       max-width: 0;
@@ -76,7 +78,8 @@ body {
     }
   }
   .modal-detail-content {
-    > .ant-row .ant-form-item, > .ant-form-item {
+    > .ant-row .ant-form-item,
+    > .ant-form-item {
       margin-bottom: 5px;
     }
   }
