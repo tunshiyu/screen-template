@@ -4,38 +4,38 @@
  * @作者: 阮旭松
  * @Date: 2020-05-14 15:54:36
  * @LastEditors: 阮旭松
- * @LastEditTime: 2020-05-16 12:02:28
+ * @LastEditTime: 2020-05-16 16:18:14
  */
 import React from 'react';
 import styles from './index.module.less';
-import StackSpiralRosePlot from './components/StackSpiralRosePlot';
-import GroupedColumnLinePlot from './components/GroupedColumnLinePlot';
-import CustomBarPlot from './components/CustomBarPlot';
-import WaterfallPlot from './components/WaterfallPlot';
-import StackRosePlot from './components/StackRosePlot';
-import CustomGroupedBarPlot from './components/CustomGroupedBarPlot';
-import IcebergPlot from './components/IcebergPlot';
-import LiquidPlot from './components/LiquidPlot';
-import RadialStackPlot from './components/RadialStackPlot';
-import StackAreaPlot from './components/StackAreaPlot';
+import RightRow1Col1 from './components/RightRow1Col1';
+import RightRow1Col2 from './components/RightRow1Col2';
+import RightRow2Col1 from './components/RightRow2Col1';
+import RightRow1Col3 from './components/RightRow1Col3';
+import RightRow2Col2 from './components/RightRow2Col2';
+import RightRow3Col1 from './components/RightRow3Col1';
+import RightRow3Col2 from './components/RightRow3Col2';
+import RightRow4Col1 from './components/RightRow4Col1';
+import RightRow4Col2 from './components/RightRow4Col2';
+import RightRow4Col3 from './components/RightRow4Col3';
 
 const ScreenRight = () => {
   return (
     <div className={styles.rightScreen}>
       {/** 第一行 */}
-      <StackSpiralRosePlot />
-      <StackRosePlot />
-      <CustomBarPlot />
+      <RightRow1Col1 />
+      <RightRow1Col2 />
+      <RightRow1Col3 />
       {/** 第二行 */}
-      <GroupedColumnLinePlot />
-      <WaterfallPlot />
+      <RightRow2Col1 />
+      <RightRow2Col2 />
       {/** 第三行 */}
-      <CustomGroupedBarPlot />
-      <IcebergPlot />
+      <RightRow3Col1 />
+      <RightRow3Col2 />
       {/** 第四行 */}
-      <LiquidPlot />
-      <RadialStackPlot />
-      <StackAreaPlot />
+      <RightRow4Col1 />
+      <RightRow4Col2 />
+      <RightRow4Col3 />
     </div>
   );
 };
