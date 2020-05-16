@@ -4,7 +4,7 @@
  * @作者: 阮旭松
  * @Date: 2020-05-14 15:54:36
  * @LastEditors: 阮旭松
- * @LastEditTime: 2020-05-16 12:13:43
+ * @LastEditTime: 2020-05-16 14:59:49
  */
 import React from 'react';
 import { ChartDom, createGroupedColumnLinePlot } from '@td-design/charts';
@@ -24,7 +24,7 @@ const GroupedColumnLinePlot = () => {
           config: {
             xField: 'time',
             yField: ['value', 'count'],
-            groupField: 'type',
+            columnGroupField: 'type',
           },
         })
       }
