@@ -1,52 +1,37 @@
+/*
+ * @文件描述: 中心地图
+ * @公司: thundersdata
+ * @作者: 于效仟
+ * @Date: 2019-10-30 15:45:00
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-05-18 16:15:20
+ */
 import React, { useEffect, useRef } from 'react';
 import echarts from 'echarts';
 import styles from './index.module.less';
+
+import { BaseChartOption } from '@/interfaces/common';
 import {
-  getBlueGeoMapOption,
   getBaseMapOption,
   getMapTooltipOption,
+  getCustomPointMapOption,
 } from '@/utils/charts/chart-option-utils';
-import mapJson from './mapJson.json';
-import lscache from 'lscache';
-import { mapData } from '@/pages/homepage/data';
+import { heatMapData } from '@/pages/homepage/data';
 
 const CenterMap: React.FC = () => {
   const chartRef = useRef<HTMLDivElement>(null);
 
-  function getOption() {
-    const baseOption = getBaseMapOption(mapData.data, 'hebei');
-    // 设置该值为0，当点击的时候改变省市value控制
-    baseOption.visualMap = [
-      {
-        // 图例值控制
-        show: false,
-        type: 'piecewise',
-        pieces: [
-          {
-            min: 0,
-            color: '#0C8FEB',
-          }, // 不指定 max，表示 max 为无限大（Infinity）。
-          {
-            max: 1,
-            color: '#5ACCFB',
-          }, // 不指定 max，表示 max 为无限大（Infinity）。
-        ],
-      },
-    ];
-    const blueGeoOption = getBlueGeoMapOption(baseOption);
-    const option = getMapTooltipOption(blueGeoOption, {}, 'pharmacy');
-    return option;
-  }
-
   useEffect(() => {
-    const option = getOption() as echarts.EChartOption;
+    const option = getBaseMapOption(heatMapData as BaseChartOption);
+    const customPointOption = getCustomPointMapOption(option, {
+      symbol:
+        option['symbol'] || `image://${require('@/assets/icon_map_order.png')}`,
+    });
+    const opt = getMapTooltipOption(customPointOption);
 
-    echarts.registerMap('hebei', mapJson);
     const chart = echarts.init(chartRef.current!);
-
-    chart.setOption(option);
+    chart.setOption(opt as echarts.EChartOption);
     return () => {
-      lscache.flush();
       // 释放图表实例
       chart.dispose();
     };

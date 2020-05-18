@@ -1,7 +1,56 @@
-.centerScreen {
-  width: 1440px;
-  height: 772px;
-  position: absolute;
-  top: 212px;
-  left: 1200px;
+@import '../../../../styles/common.less';
+
+@mapHeight: 620px;
+@quotasHeight: 100px;
+@warnHeight: 236px;
+
+.centerScreenWrap {
+  height: 100%;
+  width: 760px;
+  position: relative;
+  left: 580px;
+
+  .map {
+    width: 760px;
+    height: calc(100% - @quotasHeight - @warnHeight - 200px);
+    position: absolute;
+    top: 232px;
+    left: 0;
+  }
+
+  .warning {
+    width: 700px;
+    height: @warnHeight;
+    position: absolute;
+    top: 806px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  .quotas {
+    width: 100%;
+    height: @quotasHeight;
+    position: absolute;
+    top: 106px;
+    left: 0;
+
+    .quota {
+      display: flex;
+      justify-content: space-between;
+      margin-top: @base-px*4;
+
+      .quota-percentage {
+        text-align: center;
+        font-size: 14px;
+
+        &-label {
+          color: rgba(255, 255, 255, 0.7);
+        }
+
+        &-number {
+          color: #c81a1a;
+        }
+      }
+    }
+  }
 }
