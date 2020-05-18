@@ -3,8 +3,8 @@
  * @公司: thundersdata
  * @作者: 廖军
  * @Date: 2019-10-24 18:14:00
- * @LastEditors: 阮旭松
- * @LastEditTime: 2020-05-15 18:33:44
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-05-18 16:55:17
  */
 import echarts from 'echarts';
 import {
@@ -18,10 +18,6 @@ import string from '../string';
 import { isObject } from 'lodash';
 import 'echarts/lib/chart/map';
 import 'echarts/map/js/china';
-
-const { valueFormat } = string;
-
-const SALES_DEFAULT_MAP_NAME = '热力图';
 
 interface BaseLegendsProps {
   rowNumber?: number;
@@ -42,6 +38,41 @@ const DATA_ZOOM_HEIGHT = 50;
 const GRID_BOTTOM_PADDING = 30;
 // 基础间距
 const BASE_PADDING = 5;
+
+export const isDot = (num: string | number) => {
+  return num.toString().indexOf('.') !== -1;
+};
+
+export const fixDecimalPlace = (num: number, fixNum = 2) => {
+  return ('' + num).includes('.') ? num.toFixed(fixNum) : num;
+};
+/**
+ * 返回value 与 unit区分开
+ * @param value
+ */
+export const valueFormatWithUnit = (value: number | string) => {
+  let valueStr: number | string = value;
+  let unit = '';
+  if (value >= 10000 && value < 100000000) {
+    valueStr = fixDecimalPlace(+value / 10000);
+    unit = '万';
+  }
+  if (value >= 100000000) {
+    valueStr = fixDecimalPlace(+value / 100000000);
+    unit = '亿';
+  }
+  // 后端提出,如果小于一万，四舍五入两位小数
+  if (value < 10000 && isDot(value)) valueStr = Number(value).toFixed(2);
+  return { value: valueStr, unit };
+};
+
+/** 根据数的大小进行单位转换 */
+export const valueFormat = (value: number | string) => {
+  const prefix = Number(value) < 0 ? '-' : '';
+
+  const valueItem = valueFormatWithUnit(Math.abs(Number(value)) || value);
+  return `${prefix + valueItem.value}${valueItem.unit}`;
+};
 
 /**
  * 从series中获取所有图例的data
@@ -205,7 +236,7 @@ export const getBaseMapOption = (
           show: false,
         },
       },
-      center: [104, 39],
+      center: [104, 36],
       roam: false,
       zoom: 1,
       itemStyle: {
@@ -232,31 +263,6 @@ export const getBaseMapOption = (
 
     visualMap: visualMap.map(dataConfig => {
       let config: object = { ...dataConfig };
-      if (dataConfig.type === 'piecewise') {
-        config = { ...visualMapConfig, ...visualMap[0] };
-      }
-      if (dataConfig.type === 'continuous') {
-        config = { ...visualMapConfig, ...visualMap[0] };
-      }
-      if (!dataConfig.type) {
-        // 平均值最大值
-        // const max =
-        //   series[1]['data'].map((i: { value: number }) => i.value * 1).reduce((p, n) => p + n) /
-        //   series[1]['data'].length;
-        // 热力图1由于做了降幂计算，所以他的visualMap的min和max同样也需要降幂
-        const isSqrt = series[1]['name'] === SALES_DEFAULT_MAP_NAME;
-        config = {
-          ...visualMapConfig,
-          min: isSqrt
-            ? Math.sqrt(Number(visualMap[0].min))
-            : Number(visualMap[0].min),
-          max: isSqrt
-            ? Math.sqrt(Number(visualMap[0].max))
-            : Number(visualMap[0].max),
-        };
-        return config;
-      }
-
       config = { ...visualMapConfig, ...visualMap[0] };
       return config;
     }),
@@ -476,60 +482,32 @@ export const hasYAxis = (
 /**
  * 对series里面的data进行格式化
  * @param series
- * @param type: 传detail为特殊格式的tooltip
+ *
  */
-export function seriesFormat<T>(series: T[], type?: string) {
+export const seriesFormat = <T>(series: T[]) => {
   // 解决formatter不能引入函数问题
   const newSeries: T[] = [];
   series.forEach(item => {
     const data = item['data'] || [];
-    if (type === 'detail') {
-      newSeries.push({
-        ...item,
-        data: data.map(
-          (valueItem: {
-            value: number;
-            detail?: { name: string; value: string; date: string }[];
-          }) => {
-            return {
-              ...valueItem,
-              valueFormat: valueItem['detail']
-                ? `${valueItem['detail']
-                    ?.map(a => {
-                      return (
-                        `<span style="color: rgba(255, 254, 254, 1);font-size:11px">${a.name}</span>` +
-                        '</br>' +
-                        `收率(出粉率)：${a.value}%  ` +
-                        '</br>' +
-                        `采购:${a.date}`
-                      );
-                    })
-                    .join('</br>')}`
-                : '',
-            };
-          },
-        ),
-      });
-    } else {
-      newSeries.push({
-        ...item,
-        data: data.map((valueItem: { value: number }) => ({
-          ...valueItem,
-          valueFormatABS:
-            valueItem.value !== undefined
-              ? `${valueFormat(Math.abs(valueItem.value))}${valueItem['unit'] ||
-                  ''}`
-              : '暂无',
-          valueFormat:
-            valueItem.value !== undefined
-              ? `${valueFormat(valueItem.value)}${valueItem['unit'] || ''}`
-              : '暂无',
-        })),
-      });
-    }
+
+    newSeries.push({
+      ...item,
+      data: data.map((valueItem: { value: number }) => ({
+        ...valueItem,
+        valueFormatABS:
+          valueItem.value !== undefined
+            ? `${valueFormat(Math.abs(valueItem.value))}${valueItem['unit'] ||
+                ''}`
+            : '暂无',
+        valueFormat:
+          valueItem.value !== undefined
+            ? `${valueFormat(valueItem.value)}${valueItem['unit'] || ''}`
+            : '暂无',
+      })),
+    });
   });
   return newSeries;
-}
+};
 
 /**
  * 判断验证的参数是否为无效参数
@@ -811,9 +789,8 @@ export const getCustomPointMapOption = (
     rippleEffect: {
       brushType: 'stroke',
     },
-    // symbol函数不能正常渲染图例
+
     symbol,
-    // symbol,
     symbolSize: function symbolSize(val: number[]) {
       let rate;
       if (val[2] / 10000000 > 24) {
@@ -824,7 +801,6 @@ export const getCustomPointMapOption = (
         rate = val[2] / 10000000;
       }
       return symbol ? 24 : rate;
-      // return 24;
     },
 
     hoverAnimation: true,
@@ -941,8 +917,8 @@ export const getCustomTooltipOption = (option: EChartOption) => {
 
 export const getMapTooltipOption = (
   option: EChartOption,
+  // 如果传则自定义tootip的title，不传则title为省市的名字
   mapToolTipTitle?: { left?: string; right?: string },
-  type?: string,
 ) => {
   option.tooltip = {
     trigger: 'item',
@@ -953,31 +929,19 @@ export const getMapTooltipOption = (
     ) {
       const tooltipData: SelectOption[] = params['data']?.tooltipData || [];
       const str = createLabelItemStr(tooltipData);
-      // 详情图标
+      // scatter|effectScatter  地图图标
       if (
         params['seriesType'] === 'scatter' ||
         params['seriesType'] === 'effectScatter'
       ) {
-        if (type === 'sales') {
-          const str = createLabelItemStr([
-            { label: params['data']?.name, value: params['data']?.value[2] },
-          ]);
-          return createTooltipBlockStr(str);
-        }
-        if (type === 'pharmacy') {
-          return createTooltipBlockStr('', {
-            left: params['data']?.name,
-            right: '',
-          });
-        }
         return tooltipData.length > 0
           ? createTooltipBlockStr(str, {
               left: params['data']['name'],
               right: '',
             })
           : '';
-        // 地图飞线
       }
+      // lines类，地图飞线
       if (params['seriesType'] === 'lines') {
         const tooltipData: SelectOption[] =
           (option.series &&
@@ -985,21 +949,17 @@ export const getMapTooltipOption = (
           [];
         const str = createLabelItemStr(tooltipData);
         return tooltipData.length > 0 ? createTooltipBlockStr(str) : '';
-        // 具体省市
       }
+      // map类，具体省市
       if (params['seriesType'] === 'map') {
         const isHaveData = params['data']?.name;
         let tooltipData: SelectOption[];
-        if (type === 'sales' && !params['data']?.tooltipData) {
+        if (!params['data']?.tooltipData) {
           tooltipData = isHaveData
             ? [
                 {
-                  label: params['data']?.name + '销售额',
-                  value:
-                    // 由于热力图1的series做了降幂计算，真实的tooltip值需要再二次方回来
-                    params['seriesName'] === SALES_DEFAULT_MAP_NAME
-                      ? params['data']?.value ** 2
-                      : params['data']?.value,
+                  label: params['data']?.name,
+                  value: params['data']?.value,
                 },
               ]
             : [];
@@ -1007,21 +967,18 @@ export const getMapTooltipOption = (
           tooltipData = params['data']?.tooltipData || [];
         }
         const str = createLabelItemStr(tooltipData);
-        if (type === 'sales') {
-          return tooltipData.length > 0
-            ? createTooltipBlockStr(str, {
-                left: params['name'],
-                right: '',
-              })
-            : '';
-        }
         return tooltipData.length > 0
           ? createTooltipBlockStr(
               str,
-              mapToolTipTitle && {
-                left: mapToolTipTitle?.left || '',
-                right: mapToolTipTitle?.right || '',
-              },
+              mapToolTipTitle
+                ? {
+                    left: mapToolTipTitle?.left || '',
+                    right: mapToolTipTitle?.right || '',
+                  }
+                : {
+                    left: params['name'],
+                    right: '',
+                  },
             )
           : '';
       }
@@ -1173,9 +1130,9 @@ export const createCustomStyleTooltip = (title: string, bottom: string) => {
  * @参数: baseOption
  * @返回值: 改造后的对象，直接赋值给baseOption.tooltip
  */
-export function getExtraTextFormatter(
+export const getExtraTextFormatter = (
   baseOption: echarts.EChartOption<echarts.EChartOption.Series>,
-) {
+) => {
   return {
     ...baseOption.tooltip,
     formatter: function format(
@@ -1212,4 +1169,4 @@ export function getExtraTextFormatter(
       );
     },
   };
-}
+};

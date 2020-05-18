@@ -3,8 +3,8 @@
  * @公司: thundersdata
  * @作者: 阮旭松
  * @Date: 2020-05-14 17:30:41
- * @LastEditors: 阮旭松
- * @LastEditTime: 2020-05-16 12:03:15
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-05-18 16:41:07
  */
 
 export const barData = [
@@ -645,4 +645,108 @@ export const mapData = {
       },
     ],
   },
+};
+
+export const warnData = [
+  {
+    typeDesc: '近效期',
+    content: '金源药店库存中20180206F批号血塞通滴丸有效期剩半年',
+    datatime: '2019/01/14',
+  },
+  {
+    typeDesc: '库存断货',
+    content: '库存断货库存断货库存断货库存断货库存断货',
+    datatime: '2019/01/14',
+  },
+  {
+    typeDesc: '销售突增',
+    content: '销售突增销售突增销售突增销售突增销售突增销售突增',
+    datatime: '2019/01/14',
+  },
+  {
+    typeDesc: '超期库存',
+    content: '超期库存超期库存超期库存超期库存超期库存超期库存',
+    datatime: '2019/01/14',
+  },
+  {
+    typeDesc: '跨省销售',
+    content: '跨省销售跨省销售跨省销售跨省销售',
+    datatime: '2019/01/14',
+  },
+  {
+    typeDesc: '超期库存',
+    content: '超期库存超期库存超期库存超期库存超期库存超期库存',
+    datatime: '2019/01/14',
+  },
+];
+
+export const heatMapData = {
+  // 热力图visualMap: min max为所有值中的最大最小值，
+  visualMap: [
+    {
+      min: 0,
+      max: 10000,
+    },
+  ],
+  // type为lines时: 飞线图，
+  // type为map时: 传name时为热力图 | 不传根据value的经纬度映射为图标
+  series: [
+    {
+      type: 'lines',
+      data: [
+        [
+          { coord: [121.48, 31.22] },
+          { coord: [127.9688, 45.368] },
+          [{ label: '飞线title', value: '100' }],
+        ],
+      ],
+    },
+    {
+      type: 'map',
+      data: [
+        {
+          name: '北京市',
+          value: [116.41, 39.91],
+          tooltipData: [
+            {
+              label: '北京市详情',
+              value: 5465115.53,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: '热力图',
+      type: 'map',
+      data: [
+        {
+          name: '云南',
+          value: 10000,
+          tooltipData: [
+            {
+              label: '云南详情',
+              value: 5465115.53,
+            },
+            {
+              label: '云南详情2',
+              value: 5465115.53,
+            },
+          ],
+        },
+        {
+          name: '四川',
+          value: 1000,
+        },
+        {
+          name: '浙江',
+          value: 3000,
+        },
+        {
+          name: '上海',
+          value: 100,
+        },
+      ],
+    },
+  ],
 };
