@@ -4,7 +4,7 @@
  * @作者: 阮旭松
  * @Date: 2020-05-14 15:54:36
  * @LastEditors: 阮旭松
- * @LastEditTime: 2020-05-16 16:20:10
+ * @LastEditTime: 2020-05-18 14:30:15
  */
 import React from 'react';
 import { ChartDom, createStackRosePlot } from '@td-design/charts';
@@ -24,6 +24,7 @@ const RightRow1Col1 = () => (
           categoryField: 'category',
           stackField: 'type',
           isSpiral: true,
+          padding: [20, 50, 50, 50],
         },
       })
     }

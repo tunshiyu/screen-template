@@ -33,9 +33,6 @@ export default {
       sourceStr.length,
     );
   },
-  isDot(num: string | number) {
-    return num.toString().indexOf('.') !== -1;
-  },
 
   /**
    * 值格式化为string
@@ -60,37 +57,5 @@ export default {
     input.select();
     document.execCommand('copy');
     document.body.removeChild(input);
-  },
-
-  fixDecimalPlace(num: number, fixNum = 2) {
-    return ('' + num).includes('.') ? num.toFixed(fixNum) : num;
-  },
-  /**
-   * 返回value 与 unit区分开
-   * @param value
-   */
-  valueFormatWithUnit(value: number | string) {
-    let valueStr: number | string = value;
-    let unit = '';
-    if (value >= 10000 && value < 100000000) {
-      valueStr = this.fixDecimalPlace(+value / 10000);
-      unit = '万';
-    }
-    if (value >= 100000000) {
-      valueStr = this.fixDecimalPlace(+value / 100000000);
-      unit = '亿';
-    }
-    // 后端提出,如果小于一万，四舍五入两位小数
-    if (value < 10000 && this.isDot(value)) valueStr = Number(value).toFixed(2);
-    return { value: valueStr, unit };
-  },
-
-  /** 根据数的大小进行单位转换 */
-  valueFormat(value: number | string) {
-    const prefix = Number(value) < 0 ? '-' : '';
-    const valueItem = this.valueFormatWithUnit(
-      Math.abs(Number(value)) || value,
-    );
-    return `${prefix + valueItem.value}${valueItem.unit}`;
   },
 };

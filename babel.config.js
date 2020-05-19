@@ -11,7 +11,7 @@ module.exports = {
           }
           return `@td-design/charts/es/components/${name}`;
         },
-        style: true,
+        style: name => `${name}/style/index`,
       },
     ],
   ],

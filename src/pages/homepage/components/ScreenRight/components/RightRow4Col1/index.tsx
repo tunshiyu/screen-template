@@ -4,7 +4,7 @@
  * @作者: 阮旭松
  * @Date: 2020-05-14 15:54:36
  * @LastEditors: 阮旭松
- * @LastEditTime: 2020-05-16 16:22:17
+ * @LastEditTime: 2020-05-18 14:37:33
  */
 import React from 'react';
 import { ChartDom, createLiquidPlot } from '@td-design/charts';
@@ -18,6 +18,9 @@ const RightRow4Col1 = () => (
       createLiquidPlot({
         dom,
         data: 80,
+        config: {
+          padding: [0, 0, 30, -50],
+        },
       })
     }
   />

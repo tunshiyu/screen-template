@@ -34,7 +34,7 @@ const CenterMap: React.FC = () => {
       },
     ];
     const blueGeoOption = getBlueGeoMapOption(baseOption);
-    const option = getMapTooltipOption(blueGeoOption, {}, 'pharmacy');
+    const option = getMapTooltipOption(blueGeoOption, {});
     return option;
   }
 

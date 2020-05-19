@@ -4,7 +4,7 @@
  * @作者: 阮旭松
  * @Date: 2020-05-14 17:30:41
  * @LastEditors: 阮旭松
- * @LastEditTime: 2020-05-16 12:03:15
+ * @LastEditTime: 2020-05-18 15:49:36
  */
 
 export const barData = [
