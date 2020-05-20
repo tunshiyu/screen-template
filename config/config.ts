@@ -1,3 +1,12 @@
+/*
+ * @文件描述:
+ * @公司: thundersdata
+ * @作者: 于效仟
+ * @Date: 2020-05-16 14:33:48
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-05-19 16:37:36
+ */
+
 import { defineConfig } from 'umi';
 import AntdDayjsWebpackPlugin from 'antd-dayjs-webpack-plugin';
 import routeConfig from './routeConfig';
@@ -40,6 +49,11 @@ export default defineConfig({
     {
       rel: 'stylesheet',
       href: '//at.alicdn.com/t/font_1509107_vaarx0n4zz.css',
+    },
+    {
+      type: 'text/css',
+      rel: 'stylesheet',
+      href: '//at.alicdn.com/t/font_1420916_kjfn9bw0war.css',
     },
   ],
   chainWebpack(config) {
