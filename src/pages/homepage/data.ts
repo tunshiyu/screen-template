@@ -4,7 +4,7 @@
  * @作者: 阮旭松
  * @Date: 2020-05-14 17:30:41
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-21 14:23:20
+ * @LastEditTime: 2020-05-21 18:55:11
  */
 
 export const barData = [
@@ -648,8 +648,8 @@ export const mapData = {
 };
 
 // 物料合格率统计
-export const standardsDatas = [93.5, 100, 99.5];
-export const scoreDatas = [
+export const standardsData = [93.5, 100, 99.5];
+export const scoreData = [
   {
     name: '包材（标准：93.5）',
     value: '93.5',
