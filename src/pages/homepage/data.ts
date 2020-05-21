@@ -4,7 +4,7 @@
  * @作者: 阮旭松
  * @Date: 2020-05-14 17:30:41
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-20 11:24:29
+ * @LastEditTime: 2020-05-21 14:23:20
  */
 
 export const barData = [
@@ -652,17 +652,27 @@ export const standardsDatas = [93.5, 100, 99.5];
 export const scoreDatas = [
   {
     name: '包材（标准：93.5）',
-    value: 93.95,
+    value: '93.5',
     unit: '%',
   },
   {
     name: '原材料（标准：100）',
-    value: 89.95,
+    value: '89.95',
     unit: '%',
   },
   {
     name: '中药材（标准：99.5）',
-    value: 60,
+    value: '60',
+    unit: '%',
+  },
+  {
+    name: '中药材（标准：99.5）2',
+    value: '60',
+    unit: '%',
+  },
+  {
+    name: '中药材（标准：99.5）2',
+    value: '60',
     unit: '%',
   },
 ];
