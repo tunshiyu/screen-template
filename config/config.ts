@@ -1,3 +1,12 @@
+/*
+ * @文件描述:
+ * @公司: thundersdata
+ * @作者: 于效仟
+ * @Date: 2020-05-16 14:33:48
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-05-21 15:44:01
+ */
+
 import { defineConfig } from 'umi';
 import AntdDayjsWebpackPlugin from 'antd-dayjs-webpack-plugin';
 import routeConfig from './routeConfig';
