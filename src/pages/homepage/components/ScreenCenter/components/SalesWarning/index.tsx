@@ -1,5 +1,6 @@
 import React from 'react';
-import CustomTable, { ColumnsProps } from '@/components/CustomTable';
+import { CustomTable, ColumnsProps } from '@td-design/charts';
+
 import { warnData } from '@/pages/homepage/data';
 
 const SalesWarning: React.FC = () => {
