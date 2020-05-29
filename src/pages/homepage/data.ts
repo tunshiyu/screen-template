@@ -3,8 +3,8 @@
  * @公司: thundersdata
  * @作者: 阮旭松
  * @Date: 2020-05-14 17:30:41
- * @LastEditors: 阮旭松
- * @LastEditTime: 2020-05-18 15:49:36
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-05-21 18:55:11
  */
 
 export const barData = [
@@ -646,3 +646,33 @@ export const mapData = {
     ],
   },
 };
+
+// 物料合格率统计
+export const standardsData = [93.5, 100, 99.5];
+export const scoreData = [
+  {
+    name: '包材（标准：93.5）',
+    value: '93.5',
+    unit: '%',
+  },
+  {
+    name: '原材料（标准：100）',
+    value: '89.95',
+    unit: '%',
+  },
+  {
+    name: '中药材（标准：99.5）',
+    value: '60',
+    unit: '%',
+  },
+  {
+    name: '中药材（标准：99.5）2',
+    value: '60',
+    unit: '%',
+  },
+  {
+    name: '中药材（标准：99.5）2',
+    value: '60',
+    unit: '%',
+  },
+];
