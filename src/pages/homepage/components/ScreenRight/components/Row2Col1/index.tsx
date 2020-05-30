@@ -9,7 +9,7 @@
 import React from 'react';
 import { ChartDom, createDonutRosePlot } from '@td-design/charts';
 import { pieData } from '@/pages/homepage/data';
-import styles from './index.module.less';
+import styles from '../../index.module.less';
 
 const Row2Col1 = () => {
   return (

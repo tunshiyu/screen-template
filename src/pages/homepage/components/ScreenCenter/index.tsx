@@ -4,7 +4,7 @@
  * @作者: 阮旭松
  * @Date: 2020-05-14 15:54:36
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-18 17:06:47
+ * @LastEditTime: 2020-05-30 16:03:43
  */
 import React from 'react';
 import styles from './index.module.less';
@@ -13,6 +13,7 @@ import SalesWarning from './components/SalesWarning';
 import BlockWithTitle from '@/components/BlockWithTitle';
 import CustomQuota from '@/components/CustomQuota';
 import { QuotaData } from '@/interfaces/common';
+import { rem } from '@/utils/rem';
 
 const getQuotaItem = (
   { name, value, unit, percentage }: QuotaData,
@@ -25,7 +26,7 @@ const getQuotaItem = (
       // 第二个和第四个百分比需要小数点后截取两位
       value={index === 1 || index === 3 ? Math.floor(value * 100) / 100 : value}
       label={name}
-      unitStyle={{ marginTop: 4 }}
+      unitStyle={{ marginTop: rem(4) }}
       unit={<div style={{ display: 'flex' }}>{unit}</div>}
       quotaStyle={{ justifyContent: 'center' }}
       align="vertical"
@@ -49,7 +50,7 @@ const getQuotaItem = (
 const renderQuota = (list: QuotaData[]) => {
   const quotaDom = [];
   quotaDom.push(
-    <div key="line1" className={styles.quota} style={{ padding: ' 0 40px' }}>
+    <div key="line1" className={styles.quota}>
       {list
         .slice(0, 5)
         .map((item, index) => getQuotaItem(item, 'large', index))}

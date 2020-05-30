@@ -8,7 +8,7 @@
  */
 import React from 'react';
 import { ChartDom, createDonutPlot } from '@td-design/charts';
-import styles from './index.module.less';
+import styles from '../../index.module.less';
 
 const Row4Col1 = () => (
   <ChartDom

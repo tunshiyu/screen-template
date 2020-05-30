@@ -1,8 +1,28 @@
+/*
+ * @文件描述:
+ * @公司: thundersdata
+ * @作者: 于效仟
+ * @Date: 2020-05-22 14:22:59
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-05-30 16:33:40
+ */
+
 import { defineConfig } from 'umi';
 import AntdDayjsWebpackPlugin from 'antd-dayjs-webpack-plugin';
 import routeConfig from './routeConfig';
 
+const px2rem = require('postcss-pxtorem');
+
 export default defineConfig({
+  extraPostCSSPlugins: [
+    px2rem({
+      rootValue: 18,
+
+      propBlackList: [],
+
+      selectorBlackList: [],
+    }),
+  ],
   dynamicImport: {
     loading: '@/components/Loading.tsx',
   },

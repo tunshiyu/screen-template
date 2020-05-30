@@ -4,10 +4,11 @@
  * @作者: 廖军
  * @Date: 2019-11-05 11:31:30
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-18 13:55:50
+ * @LastEditTime: 2020-05-30 16:36:40
  */
 import React, { CSSProperties } from 'react';
 import { valueFormatWithUnit } from '@/utils/charts/chart-option-utils';
+import { rem } from '@/utils/rem';
 
 type SizeType = 'large' | 'normal' | 'small' | 'special';
 
@@ -140,7 +141,8 @@ const CustomQuota: React.FC<CustomQuotaProps> = props => {
       letterSpacing: 2,
       textAlign: 'center',
       fontFamily: 'AlibabaPuHuiTi-Regular',
-      ...baseStyleWithSize.label,
+      fontSize: rem(baseStyleWithSize.label.fontSize),
+      whiteSpace: 'nowrap',
       ...labelStyle,
     };
     const prefix: CSSProperties = {
@@ -154,13 +156,15 @@ const CustomQuota: React.FC<CustomQuotaProps> = props => {
       marginRight: 7,
       paddingLeft: size === 'special' ? 26 : 0,
 
-      ...baseStyleWithSize.value,
+      // ...baseStyleWithSize.value,
+      fontSize: rem(baseStyleWithSize.value.fontSize),
       ...valueStyle,
     };
     const unit: CSSProperties = {
       color: quotaColor,
 
-      ...baseStyleWithSize.unit,
+      // ...baseStyleWithSize.unit,
+      fontSize: rem(baseStyleWithSize.unit.fontSize),
       ...unitStyle,
     };
     return { label, prefix, value, unit };

@@ -5,7 +5,7 @@
  * @作者: 阮旭松
  * @Date: 2020-05-14 15:54:36
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-28 18:46:23
+ * @LastEditTime: 2020-05-29 15:42:46
  */
 import React, { useState } from 'react';
 import {
@@ -15,7 +15,7 @@ import {
   TitleLink,
 } from '@td-design/charts';
 import { barData as barData1 } from '@/pages/homepage/data';
-import styles from './index.module.less';
+import styles from '../../index.module.less';
 import { useModel } from 'umi';
 import useSwitchKey from '@/hooks/useSwitchKey';
 

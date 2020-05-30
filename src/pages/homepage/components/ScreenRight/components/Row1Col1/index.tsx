@@ -4,12 +4,12 @@
  * @作者: 阮旭松
  * @Date: 2020-05-14 15:54:36
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-16 19:29:56
+ * @LastEditTime: 2020-05-30 16:27:36
  */
 import React from 'react';
 import { ChartDom, createScatterPlot } from '@td-design/charts';
 import { scatterData } from '@/pages/homepage/data';
-import styles from './index.module.less';
+import styles from '../../index.module.less';
 
 const Row1Col1 = () => (
   <ChartDom
@@ -23,7 +23,7 @@ const Row1Col1 = () => (
           xField: 'date',
           yField: 'type',
           sizeField: 'value',
-          yPrefixName: '条件',
+          yNameFormatter: name => `条件${name}`,
         },
       })
     }

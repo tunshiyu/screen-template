@@ -3,14 +3,15 @@
  * @公司: thundersdata
  * @作者: 陈杰
  * @Date: 2019-10-25 13:43:18
- * @LastEditors: 陈杰
- * @LastEditTime: 2020-04-27 13:51:17
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-05-30 16:03:05
  */
 import isEmpty from 'lodash/isEmpty';
 import { request } from 'umi';
 import { MenuDataItem } from '@ant-design/pro-layout';
 import arrayUtils from '@/utils/array';
 import { PrivilegeResource } from './interfaces/common';
+import { remFunc } from './utils/rem';
 
 interface Route {
   path: string;
@@ -30,6 +31,9 @@ const privileges: string[] = [];
  * @param oldRender
  */
 export async function render(oldRender: Function) {
+  window.onresize = remFunc;
+  remFunc();
+
   const result = await request('/resource');
   const { code, success, data = [] } = result;
   if (code === 20000 && success) {
@@ -40,7 +44,7 @@ export async function render(oldRender: Function) {
       type: 'asc',
     });
     const flatRoutes = arrayUtils.deepFlatten(routes);
-    flatRoutes.forEach((route) => {
+    flatRoutes.forEach(route => {
       privileges.push(...route.privilegeList);
     });
     // 将menus保存为应用的菜单、将privileges保存为应用的细粒度权限
@@ -58,14 +62,13 @@ export async function render(oldRender: Function) {
  * @param routes
  */
 export function patchRoutes(oldRoutes: { routes: Route[] }) {
-  oldRoutes.routes.forEach((route) => {
+  oldRoutes.routes.forEach(route => {
     if (route.path === '/') {
-      serverRoutes.forEach((sr) => {
+      serverRoutes.forEach(sr => {
         const len = sr.path.split('/').length;
         if (route.routes) {
-          const res = route.routes?.filter(
-            (i) => i.path?.split('/').length > len,
-          ).length;
+          const res = route.routes?.filter(i => i.path?.split('/').length > len)
+            .length;
           if (res < 0) {
             route.routes.splice(1, 0, sr);
           } else {
@@ -83,8 +86,8 @@ export async function getInitialState() {
     resolve({
       menus,
       privileges,
-    })
-  })
+    });
+  });
 }
 
 /**
@@ -92,7 +95,7 @@ export async function getInitialState() {
  * @param resources
  */
 function convertResourceToMenu(list: PrivilegeResource[]): MenuDataItem[] {
-  return list.map((item) => {
+  return list.map(item => {
     if (!isEmpty(item.children)) {
       return {
         name: item.description,
@@ -116,7 +119,7 @@ function convertResourceToMenu(list: PrivilegeResource[]): MenuDataItem[] {
  * @param list
  */
 function convertResourceToRoute(list: PrivilegeResource[]): Route[] {
-  return list.map((item) => {
+  return list.map(item => {
     if (!isEmpty(item.children)) {
       return {
         path: item.apiUrl,
@@ -126,7 +129,7 @@ function convertResourceToRoute(list: PrivilegeResource[]): Route[] {
     return {
       path: item.apiUrl,
       component: require(`./pages${item.apiUrl}`).default,
-      title: item.description
+      title: item.description,
     };
   });
 }
