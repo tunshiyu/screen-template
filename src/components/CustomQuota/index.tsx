@@ -4,7 +4,7 @@
  * @作者: 廖军
  * @Date: 2019-11-05 11:31:30
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-30 16:36:40
+ * @LastEditTime: 2020-05-30 17:13:04
  */
 import React, { CSSProperties } from 'react';
 import { valueFormatWithUnit } from '@/utils/charts/chart-option-utils';
@@ -155,15 +155,11 @@ const CustomQuota: React.FC<CustomQuotaProps> = props => {
       fontFamily: 'PUTHIAfont',
       marginRight: 7,
       paddingLeft: size === 'special' ? 26 : 0,
-
-      // ...baseStyleWithSize.value,
       fontSize: rem(baseStyleWithSize.value.fontSize),
       ...valueStyle,
     };
     const unit: CSSProperties = {
       color: quotaColor,
-
-      // ...baseStyleWithSize.unit,
       fontSize: rem(baseStyleWithSize.unit.fontSize),
       ...unitStyle,
     };

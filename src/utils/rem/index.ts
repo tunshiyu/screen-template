@@ -4,10 +4,11 @@
  * @作者: 于效仟
  * @Date: 2020-05-30 16:02:10
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-30 16:02:50
+ * @LastEditTime: 2020-05-30 18:20:48
  */
 
-export const rem = (px: number) => `${px / 18}rem`;
+export const RootValue = 18;
+export const rem = (px: number) => `${px / RootValue}rem`;
 
 export function remFunc() {
   // rem适配
