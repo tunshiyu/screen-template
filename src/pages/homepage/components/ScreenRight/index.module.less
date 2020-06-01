@@ -1,10 +1,15 @@
 @import '../../../../styles/common.less';
 
 .rightScreen {
-  width: 100%;
-  padding: 0 10px;
+  padding: 0 @base-px*4;
 
   .block {
     height: @base-chart-height;
+  }
+
+  :global {
+    .ant-col {
+      padding: 2 * @base-px 0;
+    }
   }
 }

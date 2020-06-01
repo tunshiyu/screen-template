@@ -4,7 +4,7 @@
  * @作者: 廖军
  * @Date: 2019-11-05 11:31:30
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-30 17:13:04
+ * @LastEditTime: 2020-06-01 15:46:30
  */
 import React, { CSSProperties } from 'react';
 import { valueFormatWithUnit } from '@/utils/charts/chart-option-utils';
@@ -30,11 +30,11 @@ export interface CustomQuotaProps {
 }
 
 // 整体行高定义
-enum LineHeightType {
-  large = '36px',
-  normal = '28px',
-  small = '24px',
-}
+const LineHeightType = {
+  large: `${rem(36)}`,
+  normal: `${rem(28)}`,
+  small: `${rem(24)}`,
+};
 
 // 不同尺寸对应的标签、值、前缀的样式配置
 const quotaFontSize = {
@@ -138,7 +138,7 @@ const CustomQuota: React.FC<CustomQuotaProps> = props => {
     const quotaColor = quotaItemColor || '#00BBFF';
     const label: CSSProperties = {
       color: 'rgba(255, 255, 255, 0.8)',
-      letterSpacing: 2,
+      letterSpacing: rem(2),
       textAlign: 'center',
       fontFamily: 'AlibabaPuHuiTi-Regular',
       fontSize: rem(baseStyleWithSize.label.fontSize),
