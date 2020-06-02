@@ -4,7 +4,7 @@
  * @作者: 于效仟
  * @Date: 2020-05-22 14:22:59
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-30 18:22:01
+ * @LastEditTime: 2020-06-02 15:03:33
  */
 
 import { defineConfig } from 'umi';
@@ -34,7 +34,7 @@ export default defineConfig({
     }),
     px2rem({
       rootValue: RootValue, // 换算基数
-      selectorBlackList: ['ant-*', '.td-*'], // 忽略rem转换
+      selectorBlackList: ['ant-', 'td-'], // 忽略rem转换
       replace: false, // 保留px
       minPixelValue: 0,
     }),

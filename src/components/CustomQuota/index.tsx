@@ -4,11 +4,11 @@
  * @作者: 廖军
  * @Date: 2019-11-05 11:31:30
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-06-01 15:46:30
+ * @LastEditTime: 2020-06-02 14:30:01
  */
 import React, { CSSProperties } from 'react';
 import { valueFormatWithUnit } from '@/utils/charts/chart-option-utils';
-import { rem } from '@/utils/rem';
+import fontStyles from './index.module.less';
 
 type SizeType = 'large' | 'normal' | 'small' | 'special';
 
@@ -28,73 +28,6 @@ export interface CustomQuotaProps {
   quotaStyle?: CSSProperties;
   isToLocaleString?: boolean;
 }
-
-// 整体行高定义
-const LineHeightType = {
-  large: `${rem(36)}`,
-  normal: `${rem(28)}`,
-  small: `${rem(24)}`,
-};
-
-// 不同尺寸对应的标签、值、前缀的样式配置
-const quotaFontSize = {
-  large: {
-    label: {
-      fontSize: 14,
-    },
-    prefix: {
-      fontSize: 28,
-    },
-    value: {
-      fontSize: 36,
-    },
-    unit: {
-      fontSize: 16,
-    },
-  },
-  normal: {
-    label: {
-      fontSize: 14,
-    },
-    prefix: {
-      fontSize: 24,
-    },
-    value: {
-      fontSize: 28,
-    },
-    unit: {
-      fontSize: 12,
-    },
-  },
-  small: {
-    label: {
-      fontSize: 10,
-    },
-    prefix: {
-      fontSize: 14,
-    },
-    value: {
-      fontSize: 18,
-    },
-    unit: {
-      fontSize: 10,
-    },
-  },
-  special: {
-    label: {
-      fontSize: 14,
-    },
-    prefix: {
-      fontSize: 24,
-    },
-    value: {
-      fontSize: 28,
-    },
-    unit: {
-      fontSize: 12,
-    },
-  },
-};
 
 const CustomQuota: React.FC<CustomQuotaProps> = props => {
   const {
@@ -130,24 +63,21 @@ const CustomQuota: React.FC<CustomQuotaProps> = props => {
         break;
       default:
     }
-    return { ...styles, lineHeight: LineHeightType[size!], ...style };
+    return { ...styles, ...style };
   };
 
   const getItemStyles = () => {
-    const baseStyleWithSize = quotaFontSize[size!];
     const quotaColor = quotaItemColor || '#00BBFF';
     const label: CSSProperties = {
       color: 'rgba(255, 255, 255, 0.8)',
-      letterSpacing: rem(2),
+      letterSpacing: 2,
       textAlign: 'center',
       fontFamily: 'AlibabaPuHuiTi-Regular',
-      fontSize: rem(baseStyleWithSize.label.fontSize),
       whiteSpace: 'nowrap',
       ...labelStyle,
     };
     const prefix: CSSProperties = {
       color: quotaColor,
-      ...baseStyleWithSize.prefix,
       ...prefixStyle,
     };
     const value: CSSProperties = {
@@ -155,12 +85,10 @@ const CustomQuota: React.FC<CustomQuotaProps> = props => {
       fontFamily: 'PUTHIAfont',
       marginRight: 7,
       paddingLeft: size === 'special' ? 26 : 0,
-      fontSize: rem(baseStyleWithSize.value.fontSize),
       ...valueStyle,
     };
     const unit: CSSProperties = {
       color: quotaColor,
-      fontSize: rem(baseStyleWithSize.unit.fontSize),
       ...unitStyle,
     };
     return { label, prefix, value, unit };
@@ -170,16 +98,27 @@ const CustomQuota: React.FC<CustomQuotaProps> = props => {
   const valueItem = valueFormatWithUnit(value);
 
   return (
-    <div style={getQuotaStyle()}>
-      {label && <div style={styles.label}>{label}</div>}
+    <div style={getQuotaStyle()} className={fontStyles[size!]}>
+      {label && (
+        <div style={styles.label} className={fontStyles.label}>
+          {label}
+        </div>
+      )}
       <div style={{ display: 'flex', justifyContent: 'center', ...quotaStyle }}>
-        {prefix && <div style={styles.prefix}>{prefix}</div>}
-        <div style={styles.value}>
+        {prefix && (
+          <div style={styles.prefix} className={fontStyles.prefix}>
+            {prefix}
+          </div>
+        )}
+        <div style={styles.value} className={fontStyles.value}>
           {isToLocaleString
             ? valueItem.value?.toLocaleString()
             : valueItem.value}
         </div>
-        <div style={{ display: 'flex', ...styles.unit }}>
+        <div
+          style={{ display: 'flex', ...styles.unit }}
+          className={fontStyles.unit}
+        >
           {valueItem.unit}
           {unit || ''}
         </div>

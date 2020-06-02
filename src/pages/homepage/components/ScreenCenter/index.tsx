@@ -4,7 +4,7 @@
  * @作者: 阮旭松
  * @Date: 2020-05-14 15:54:36
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-06-01 15:21:35
+ * @LastEditTime: 2020-06-02 14:28:45
  */
 import React from 'react';
 import styles from './index.module.less';
@@ -92,7 +92,7 @@ const data = [
 const ScreenCenter = () => {
   return (
     <Row className={styles.centerScreenWrap}>
-      <Col span={20} className={styles.quotas}>
+      <Col span={22} className={styles.quotas}>
         {renderQuota(data)}
       </Col>
       <Col span={24} className={styles.map}>
