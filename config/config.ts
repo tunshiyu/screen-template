@@ -4,11 +4,10 @@
  * @作者: 于效仟
  * @Date: 2020-05-22 14:22:59
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-06-02 15:03:33
+ * @LastEditTime: 2020-06-03 10:27:46
  */
 
 import { defineConfig } from 'umi';
-import AntdDayjsWebpackPlugin from 'antd-dayjs-webpack-plugin';
 import routeConfig from './routeConfig';
 import { RootValue } from '../src/utils/rem/index';
 
@@ -78,7 +77,4 @@ export default defineConfig({
       href: '//at.alicdn.com/t/font_1509107_vaarx0n4zz.css',
     },
   ],
-  chainWebpack(config) {
-    config.plugin('dayjs').use(AntdDayjsWebpackPlugin);
-  },
 });

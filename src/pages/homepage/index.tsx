@@ -4,7 +4,7 @@
  * @作者: 阮旭松
  * @Date: 2020-05-14 15:54:36
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-06-01 15:46:55
+ * @LastEditTime: 2020-06-03 10:36:22
  */
 import React from 'react';
 import ScreenHeader from './components/ScreenHeader';
@@ -19,28 +19,13 @@ const Homepage = () => {
     <div className={styles.container}>
       <ScreenHeader />
       <Row>
-        <Col
-          xs={{ span: 24 }}
-          sm={{ span: 24 }}
-          md={{ span: 24 }}
-          lg={{ span: 7 }}
-        >
+        <Col xs={24} md={24} xl={7}>
           <ScreenLeft />
         </Col>
-        <Col
-          xs={{ span: 24 }}
-          sm={{ span: 24 }}
-          md={{ span: 24 }}
-          lg={{ span: 10 }}
-        >
+        <Col xs={24} md={24} xl={10}>
           <ScreenCenter />
         </Col>
-        <Col
-          xs={{ span: 24 }}
-          sm={{ span: 24 }}
-          md={{ span: 24 }}
-          lg={{ span: 7 }}
-        >
+        <Col xs={24} md={24} xl={7}>
           <ScreenRight />
         </Col>
       </Row>

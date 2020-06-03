@@ -4,7 +4,7 @@
  * @作者: 阮旭松
  * @Date: 2020-05-14 15:54:36
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-30 14:58:33
+ * @LastEditTime: 2020-06-03 10:40:19
  */
 import React from 'react';
 import styles from './index.module.less';
@@ -17,25 +17,23 @@ import { Row, Col } from 'antd';
 
 const ScreenRight = () => {
   return (
-    <div className={styles.rightScreen}>
-      <Row>
-        <Col span={24}>
-          <Row1Col1 />
-        </Col>
-        <Col span={24}>
-          <Row2Col1 />
-        </Col>
-        <Col span={24}>
-          <Row3Col1 />
-        </Col>
-        <Col span={12} xs={{ span: 24 }} sm={{ span: 12 }}>
-          <Row4Col1 />
-        </Col>
-        <Col span={12} xs={{ span: 24 }} sm={{ span: 11, offset: 1 }}>
-          <Row4Col2 />
-        </Col>
-      </Row>
-    </div>
+    <Row className={styles.rightScreen}>
+      <Col span={24}>
+        <Row1Col1 />
+      </Col>
+      <Col span={24}>
+        <Row2Col1 />
+      </Col>
+      <Col span={24}>
+        <Row3Col1 />
+      </Col>
+      <Col xs={24} md={12}>
+        <Row4Col1 />
+      </Col>
+      <Col xs={24} md={12}>
+        <Row4Col2 />
+      </Col>
+    </Row>
   );
 };
 
