@@ -89,6 +89,8 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.1.6",
     "pont-engine": "^1.0.3",
+    "postcss-loader": "^3.0.0",
+    "postcss-pxtorem": "4.0.1",
     "standard-version": "^8.0.0",
     "typescript": "^3.8.3"
   },

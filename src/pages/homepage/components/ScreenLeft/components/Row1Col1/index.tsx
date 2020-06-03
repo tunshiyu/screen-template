@@ -9,7 +9,7 @@
 import React from 'react';
 import { ChartDom, createColumnLinePlot } from '@td-design/charts';
 import { comboData } from '@/pages/homepage/data';
-import styles from './index.module.less';
+import styles from '../../index.module.less';
 
 export default function() {
   const { barData, lineData } = comboData;

@@ -4,12 +4,12 @@
  * @作者: 阮旭松
  * @Date: 2020-05-14 15:54:36
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-16 17:19:31
+ * @LastEditTime: 2020-05-29 15:42:39
  */
 import React from 'react';
 import { ChartDom, createCustomGroupedBarPlot } from '@td-design/charts';
 import { groupedBarData } from '@/pages/homepage/data';
-import styles from './index.module.less';
+import styles from '../../index.module.less';
 
 export default function() {
   return (

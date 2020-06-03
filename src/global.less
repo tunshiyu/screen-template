@@ -1,7 +1,7 @@
 html {
   /*火狐下隐藏滚动条*/
   scrollbar-width: none;
-  height: 100%;
+  height: auto;
 }
 
 body::-webkit-scrollbar {
@@ -10,14 +10,14 @@ body::-webkit-scrollbar {
 
 body {
   -ms-overflow-style: none;
-  height: 100%;
+  width: 100%;
+  height: auto;
   overflow-y: auto;
   overflow-x: auto;
 }
 
 #root {
-  height: 100vh;
-
+  height: auto;
   input:-webkit-autofill,
   textarea:-webkit-autofill,
   select:-webkit-autofill {
@@ -43,6 +43,7 @@ body {
         }
       }
     }
+
     &-footer {
       background: transparent;
     }
@@ -70,10 +71,12 @@ body {
     &-item {
       margin-bottom: 20px;
     }
+
     > .ant-row:last-child {
       margin-bottom: 0;
     }
   }
+
   .modal-detail-content {
     > .ant-row .ant-form-item,
     > .ant-form-item {

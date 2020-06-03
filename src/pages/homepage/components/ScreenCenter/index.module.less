@@ -1,54 +1,37 @@
 @import '../../../../styles/common.less';
 
-@quotasHeight: 100px;
-@warnHeight: 236px;
+@quotasHeight: 120px;
+@warnHeight: 300px;
 
 .centerScreenWrap {
   height: 100%;
-  width: 760px;
-  position: relative;
-  left: 580px;
+  padding: 20px 0;
 
   .map {
-    width: 760px;
-    height: calc(100% - @quotasHeight - @warnHeight - 200px);
-    position: absolute;
-    top: 232px;
-    left: 0;
+    height: 448px;
+    min-width: 160px;
+    min-height: 160px;
   }
 
   .warning {
-    width: 700px;
     height: @warnHeight;
-    position: absolute;
-    top: 806px;
-    left: 50%;
-    transform: translate(-50%, 0);
+    margin: 0 auto;
   }
 
   .quotas {
-    width: 100%;
     height: @quotasHeight;
-    position: absolute;
-    top: 106px;
-    left: 0;
+    margin: 0 auto;
 
-    .quota {
-      display: flex;
-      justify-content: space-between;
-      margin-top: @base-px*4;
+    .quota-percentage {
+      text-align: center;
+      font-size: 14px;
 
-      .quota-percentage {
-        text-align: center;
-        font-size: 14px;
+      &-label {
+        color: rgba(255, 255, 255, 0.7);
+      }
 
-        &-label {
-          color: rgba(255, 255, 255, 0.7);
-        }
-
-        &-number {
-          color: #c81a1a;
-        }
+      &-number {
+        color: #c81a1a;
       }
     }
   }

@@ -4,7 +4,7 @@
  * @作者: 阮旭松
  * @Date: 2020-05-14 15:54:36
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-18 17:06:47
+ * @LastEditTime: 2020-06-02 14:28:45
  */
 import React from 'react';
 import styles from './index.module.less';
@@ -13,6 +13,8 @@ import SalesWarning from './components/SalesWarning';
 import BlockWithTitle from '@/components/BlockWithTitle';
 import CustomQuota from '@/components/CustomQuota';
 import { QuotaData } from '@/interfaces/common';
+import { rem } from '@/utils/rem';
+import { Row, Col } from 'antd';
 
 const getQuotaItem = (
   { name, value, unit, percentage }: QuotaData,
@@ -20,40 +22,44 @@ const getQuotaItem = (
   index: number,
 ) => {
   return (
-    <CustomQuota
-      key={name}
-      // 第二个和第四个百分比需要小数点后截取两位
-      value={index === 1 || index === 3 ? Math.floor(value * 100) / 100 : value}
-      label={name}
-      unitStyle={{ marginTop: 4 }}
-      unit={<div style={{ display: 'flex' }}>{unit}</div>}
-      quotaStyle={{ justifyContent: 'center' }}
-      align="vertical"
-      size={size}
-    >
-      {percentage ? (
-        <div className={styles['quota-percentage']}>
-          <span className={styles['quota-percentage-label']}>达成</span>
-          <span className={styles['quota-percentage-number']}>
-            {percentage > 0 ? '  +' : '  '}
-            {Number(percentage)}%
-          </span>
-        </div>
-      ) : (
-        <div>&nbsp;</div>
-      )}
-    </CustomQuota>
+    <Col xs={{ span: 12 }} xl={{ span: 6 }}>
+      <CustomQuota
+        key={name}
+        // 第二个和第四个百分比需要小数点后截取两位
+        value={
+          index === 1 || index === 3 ? Math.floor(value * 100) / 100 : value
+        }
+        label={name}
+        unitStyle={{ marginTop: rem(4) }}
+        unit={<div style={{ display: 'flex' }}>{unit}</div>}
+        quotaStyle={{ justifyContent: 'center' }}
+        align="vertical"
+        size={size}
+      >
+        {percentage ? (
+          <div className={styles['quota-percentage']}>
+            <span className={styles['quota-percentage-label']}>达成</span>
+            <span className={styles['quota-percentage-number']}>
+              {percentage > 0 ? '  +' : '  '}
+              {Number(percentage)}%
+            </span>
+          </div>
+        ) : (
+          <div>&nbsp;</div>
+        )}
+      </CustomQuota>
+    </Col>
   );
 };
 
 const renderQuota = (list: QuotaData[]) => {
   const quotaDom = [];
   quotaDom.push(
-    <div key="line1" className={styles.quota} style={{ padding: ' 0 40px' }}>
+    <Row key="line1">
       {list
         .slice(0, 5)
         .map((item, index) => getQuotaItem(item, 'large', index))}
-    </div>,
+    </Row>,
   );
   return quotaDom;
 };
@@ -85,17 +91,19 @@ const data = [
 
 const ScreenCenter = () => {
   return (
-    <div className={styles.centerScreenWrap}>
-      <div className={styles.quotas}>{renderQuota(data)}</div>
-      <div className={styles.map}>
+    <Row className={styles.centerScreenWrap}>
+      <Col span={22} className={styles.quotas}>
+        {renderQuota(data)}
+      </Col>
+      <Col span={24} className={styles.map}>
         <CenterMap />
-      </div>
-      <div className={styles.warning}>
+      </Col>
+      <Col span={22} className={styles.warning}>
         <BlockWithTitle title="营销监控预警">
           <SalesWarning />
         </BlockWithTitle>
-      </div>
-    </div>
+      </Col>
+    </Row>
   );
 };
 
