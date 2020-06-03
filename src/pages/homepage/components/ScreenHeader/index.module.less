@@ -1,22 +1,37 @@
 .headerWrap {
   z-index: 2;
+  position: relative;
 
   .headerLine {
     position: absolute;
-    left: 40px;
-    top: 36px;
-    width: 3760px;
+    left: 1%;
+    top: 26px;
+    width: 98%;
     height: 70px;
-    background: url('../../../../assets/title_line.png');
-    background-size: cover;
+    background: url('../../../../assets/title_line.png') no-repeat;
+    background-size: 100%;
   }
 
   .header {
-    position: absolute;
-    left: 1735px;
-    top: 15px;
+    text-align: center;
     white-space: nowrap;
-    font-size: 54px;
+    font-size: 40px;
     color: #00bbff;
+  }
+
+  @media screen and (min-width: 1280px) {
+    .header {
+      font-size: 40px;
+    }
+  }
+  @media screen and (max-width: 1280px) {
+    .header {
+      font-size: 30px;
+    }
+  }
+  @media screen and (max-width: 960px) {
+    .header {
+      font-size: 20px;
+    }
   }
 }

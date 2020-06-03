@@ -9,7 +9,7 @@
 import React from 'react';
 import { ChartDom, createStackRosePlot } from '@td-design/charts';
 import { roseData } from '@/pages/homepage/data';
-import styles from './index.module.less';
+import styles from '../../index.module.less';
 
 const RightRow1Col2 = () => (
   <ChartDom

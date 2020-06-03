@@ -9,7 +9,7 @@
 import React from 'react';
 import { ChartDom, createLinePlot } from '@td-design/charts';
 import { barData } from '@/pages/homepage/data';
-import styles from './index.module.less';
+import styles from '../../index.module.less';
 
 // TODO: 冰山图图表组件
 const RightRow3Col2 = () => (

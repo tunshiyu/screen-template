@@ -1,6 +1,15 @@
+@import '../../../../styles/common.less';
+
 .rightScreen {
-  width: 1160px;
-  position: absolute;
-  left: 2640px;
-  top: 80px;
+  padding: 0 @base-px*4;
+
+  .block {
+    height: 235px;
+  }
+
+  :global {
+    .ant-col {
+      padding: 2 * @base-px;
+    }
+  }
 }

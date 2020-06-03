@@ -9,7 +9,7 @@
 import React from 'react';
 import { ChartDom, createWaterfallPlot } from '@td-design/charts';
 import { barData } from '@/pages/homepage/data';
-import styles from './index.module.less';
+import styles from '../../index.module.less';
 
 const RightRow2Col2 = () => (
   <ChartDom

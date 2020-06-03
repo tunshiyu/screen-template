@@ -3,12 +3,12 @@
  * @公司: thundersdata
  * @作者: 阮旭松
  * @Date: 2020-05-14 15:54:36
- * @LastEditors: 阮旭松
- * @LastEditTime: 2020-05-29 16:22:29
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-06-02 16:07:02
  */
 import React from 'react';
 import { ChartDom, createLiquidPlot } from '@td-design/charts';
-import styles from './index.module.less';
+import styles from '../../index.module.less';
 
 const RightRow4Col1 = () => (
   <ChartDom

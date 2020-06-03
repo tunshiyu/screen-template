@@ -3,8 +3,8 @@
  * @公司: thundersdata
  * @作者: 阮旭松
  * @Date: 2020-05-14 15:54:36
- * @LastEditors: 阮旭松
- * @LastEditTime: 2020-05-16 16:08:05
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-06-03 10:07:48
  */
 import React from 'react';
 import styles from './index.module.less';
@@ -14,19 +14,37 @@ import LeftRow2Col1 from './components/LeftRow2Col1';
 import LeftRow2Col2 from './components/LeftRow2Col2';
 import LeftRow2Col3 from './components/LeftRow2Col3';
 import LeftRow3 from './components/LeftRow3';
+import { Row, Col } from 'antd';
 
 const ScreenLeft = () => {
   return (
     <div className={styles.leftScreen}>
-      {/** 第一行 */}
-      <LeftRow1Col1 />
-      <LeftRow1Col2 />
+      <Row>
+        <Col xs={24} md={12}>
+          <LeftRow1Col1 />
+        </Col>
+        <Col xs={24} md={12}>
+          <LeftRow1Col2 />
+        </Col>
+      </Row>
       {/** 第二行 */}
-      <LeftRow2Col1 />
-      <LeftRow2Col2 />
-      <LeftRow2Col3 />
+      <Row>
+        <Col xs={24} md={8}>
+          <LeftRow2Col1 />
+        </Col>
+        <Col xs={24} md={8}>
+          <LeftRow2Col2 />
+        </Col>
+        <Col xs={24} md={8}>
+          <LeftRow2Col3 />
+        </Col>
+      </Row>
       {/** 第三行 */}
-      <LeftRow3 />
+      <Row>
+        <Col xs={24} md={24}>
+          <LeftRow3 />
+        </Col>
+      </Row>
     </div>
   );
 };

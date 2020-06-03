@@ -9,7 +9,7 @@
 import React from 'react';
 import { ChartDom, createRadarPlot } from '@td-design/charts';
 import { radarData } from '@/pages/homepage/data';
-import styles from './index.module.less';
+import styles from '../../index.module.less';
 
 const LeftRow2Col3 = () => (
   <ChartDom
