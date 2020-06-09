@@ -94,4 +94,4 @@ theme 下的 modifyVars 下默认可配置 antd 的自带样式变量如：@prim
 | xs(<576) | ScreenLeft/Center/Right：24/24/24<br/><br/> 内部RowCol全部叠成一列：如第一行两列,Row1Col1/Row1Col2:24/24 | ScreenLeft/Center/Right：24/24/24<br/><br/>内部RowCol全部叠成一列,如左 | 手机左中右叠成一列，各自内部也叠成一列  |
 
 PS：<br />
-1、 空间优化：两个没有x坐标轴的图表（如单例环形图（createDonutPlot）和玫瑰图（createStackRosePlot））。当在同一行时，避免空间浪费，可以在>sm(576)时保持原有布局(取代>md(768))。例如这两个图在同一行各占一半时，则设置`xs={24} sm={12} `。
+1、 空间优化：当两个没有x坐标轴的图表（如单例环形图（createDonutPlot）和玫瑰图（createStackRosePlot））在同一行时，如果设置`md={12}`(即 >md(768) )会造成空间浪费，可以设置为`sm={12}`(即在 >sm(576) 时保持原有布局)。例如这两个图在同一行各占一半时，则设置`xs={24} sm={12} `。
