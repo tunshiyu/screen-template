@@ -89,7 +89,7 @@ theme 下的 modifyVars 下默认可配置 antd 的自带样式变量如：@prim
 
 | | 32-9 | 16-9 | 目地|
 | -- | -- | -- | -- |
-| xl(>1200) | ScreenLeft/Center/Right：8/8/8 | ScreenLeft/Center/Right:7/10/7 | 大屏状态|
+| xl(>1200) | ScreenLeft/Center/Right：8/8/8 | ScreenLeft/Center/Right:7/10/7 | 大屏状态|
 | md(>=768) | ScreenLeft/Center/Right：24/24/24<br/><br/> 内部RowCol按原有布局：如第一行两列,Row1Col1/Row1Col2:12/12 | ScreenLeft/Center/Right：24/24/24<br/><br/>内部RowCol按原有布局,如左 | pad左中右叠成一列，各自内部原有布局  |
 | xs(<576) | ScreenLeft/Center/Right：24/24/24<br/><br/> 内部RowCol全部叠成一列：如第一行两列,Row1Col1/Row1Col2:24/24 | ScreenLeft/Center/Right：24/24/24<br/><br/>内部RowCol全部叠成一列,如左 | 手机左中右叠成一列，各自内部也叠成一列  |
 

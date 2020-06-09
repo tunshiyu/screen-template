@@ -7,58 +7,7 @@
  * @LastEditTime: 2020-05-15 18:22:35
  */
 
-import { MenuDataItem } from '@ant-design/pro-layout';
 import echarts from 'echarts';
-
-export interface CustomWindow extends Window {
-  gMenus: MenuDataItem[];
-  requestConfig: {
-    withCredentials: boolean;
-    getToken: () => Promise<string>;
-  };
-  authConfig: {
-    url: string;
-    client_id: string;
-    client_secret: string;
-    password_min: number;
-    password_max: number;
-    company: number;
-  };
-}
-
-export interface CustomLocation extends Location {
-  query: {
-    [x: string]: string;
-  };
-}
-
-export interface PageMatchModel {
-  isExact: boolean;
-  params: object;
-  path: string;
-  url: string;
-}
-
-export interface PageBasicPropsModel {
-  history: History;
-  location: CustomLocation;
-  match: PageMatchModel;
-  children?: React.ComponentType;
-}
-
-export interface PrivilegeResource {
-  apiUrl: string;
-  description: string;
-  icon: string;
-  id: number;
-  orderValue: number;
-  resourceKey: string;
-  type: number;
-  privilegeList: string[];
-  resourceBusinessValue: string;
-  children: PrivilegeResource[];
-  isVisible: boolean;
-}
 
 interface AngleSeriesData {
   name: string;
@@ -95,14 +44,6 @@ export type LinearColor =
     )[]
   | (string | object)[]
   | undefined;
-
-export interface MenuItemConfig {
-  key: string;
-  name: string;
-  link?: string;
-  icon: string;
-  children?: MenuItemConfig[];
-}
 
 // T merge options
 export type MergeEChartOption<T> = Merge<echarts.EChartOption, T>;
