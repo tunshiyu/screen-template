@@ -1,7 +1,13 @@
 @import '../../styles/common.less';
 
 .container {
-  width: 100%;
+  width: 1920px;
   background: url('../../assets/pic_bg.png');
   background-size: cover;
+}
+
+@media screen and (max-width: 1600px) {
+  .container {
+    width: 100%;
+  }
 }

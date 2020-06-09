@@ -1,3 +1,11 @@
+<!--
+ * @文件描述: 
+ * @公司: thundersdata
+ * @作者: 于效仟
+ * @Date: 2020-06-08 15:07:58
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-06-09 09:55:27
+--> 
 # 大屏模板
 
 ## 概要
@@ -82,3 +90,16 @@ theme 下的 modifyVars 下默认可配置 antd 的自带样式变量如：@prim
 ```
 
 在项目的样式文件`xxx.module.less`中使用该颜色变量，并从 default.less 文件中引入。`antd-pro-merge-less`会自动将该组件库中处理过的样式整合入`/theme/xxx.css`下，缓存在 node_modules/.plugin-theme 下就可以实现自定义主题色配置了。
+
+## 响应式实践标准
+
+  思路是通过antd的RowCol组件在不同breakPoint下的span，来调整它在当前Row中的布局。下面实践出了一套标准，可以参考模板代码和下面的标准加深理解。
+
+| | 32-9 | 16-9 | 目地|
+| -- | -- | -- | -- |
+| xl(>1200) | ScreenLeft/Center/Right：8/8/8 | ScreenLeft/Center/Right:7/10/7 | 大屏状态|
+| md(>=768) | ScreenLeft/Center/Right：24/24/24<br/><br/> 内部RowCol按原有布局：如第一行两列,Row1Col1/Row1Col2:12/12 | ScreenLeft/Center/Right：24/24/24<br/><br/>内部RowCol按原有布局,如左 | pad左中右叠成一列，各自内部原有布局  |
+| xs(<576) | ScreenLeft/Center/Right：24/24/24<br/><br/> 内部RowCol全部叠成一列：如第一行两列,Row1Col1/Row1Col2:24/24 | ScreenLeft/Center/Right：24/24/24<br/><br/>内部RowCol全部叠成一列,如左 | 手机左中右叠成一列，各自内部也叠成一列  |
+
+PS：<br />
+1、 空间优化：两个没有x坐标轴的图表（如单例环形图（createDonutPlot）和玫瑰图（createStackRosePlot））。当在同一行时，避免空间浪费，可以在>sm(576)时保持原有布局(取代>md(768))。例如这两个图在同一行各占一半时，则设置`xs={24} sm={12} `。

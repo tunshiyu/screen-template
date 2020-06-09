@@ -4,7 +4,7 @@
  * @作者: 阮旭松
  * @Date: 2020-05-14 15:54:36
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-06-03 10:40:19
+ * @LastEditTime: 2020-06-09 09:40:24
  */
 import React from 'react';
 import styles from './index.module.less';
@@ -27,10 +27,10 @@ const ScreenRight = () => {
       <Col span={24}>
         <Row3Col1 />
       </Col>
-      <Col xs={24} md={12}>
+      <Col xs={24} sm={12}>
         <Row4Col1 />
       </Col>
-      <Col xs={24} md={12}>
+      <Col xs={24} sm={12}>
         <Row4Col2 />
       </Col>
     </Row>
